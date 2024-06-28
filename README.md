@@ -1,5 +1,4 @@
 ---
-description: 'GitHub du projet : https://github.com/Elie-Mendy/bash-shell'
 cover: .gitbook/assets/shell.webp
 coverY: 0
 ---
@@ -7,6 +6,10 @@ coverY: 0
 # Introduction
 
 ## Introduction
+
+### GitHub du projet
+
+GitHub du projet : https://github.com/Elie-Mendy/bash-shell
 
 ### Objectif
 
