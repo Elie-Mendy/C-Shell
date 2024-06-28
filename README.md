@@ -7,9 +7,7 @@ coverY: 0
 
 ## Introduction
 
-### GitHub du projet
-
-GitHub du projet : https://github.com/Elie-Mendy/bash-shell
+{% embed url="https://github.com/Elie-Mendy/bash-shell" %}
 
 ### Objectif
 
