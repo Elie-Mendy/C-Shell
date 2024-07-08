@@ -1,9 +1,9 @@
 /*************************************************************
 # Nom ......... : menshell.c
 # Auteur .......: Elie MENDY
-# Licence ..... : réalisé dans le cadre du cours de SE (21/22)
-# Compilation.. : gcc -Wall menshell.c -L/usr/include -lreadline -o menshell
-# Usage........ : pour exécuter : menshell
+# Licence ..... : MIT
+# Compilation.. : gcc -Wall main.c -L/usr/include -lreadline -o bash-shell
+# Usage........ : pour exécuter : bash-shell
 #*************************************************************/
 
 #include "sys.h"
@@ -28,7 +28,7 @@ enum
 typedef struct command
 {
   char *argv[MaxLigne];
-} * command;
+} *command;
 
 //* ----- VARIABLES GLOBALES -----
 
@@ -92,7 +92,6 @@ int saisirLDC(char *str);
 // lancer le vidage du buffer
 void viderBuffer();
 
-
 //*************************************************************
 //* EXECUTION DU MAIN
 //*************************************************************
@@ -147,7 +146,7 @@ int main(int argc, char *argv[])
     //* ----- LANCEMENT PROCESSUS ENFANT -----
     tmp = fork();
 
-    //! ERREUR FORK 
+    //! ERREUR FORK
     if (tmp < 0) // == -1 : Erreur
     {
       perror("fork");
@@ -198,7 +197,6 @@ int main(int argc, char *argv[])
 //*************************************************************
 //* DEFINITION DE FONCTIONS
 //*************************************************************
-
 
 /*
 Nom 	    : usage
@@ -318,15 +316,15 @@ void parsingChevrons(char *ligne[], int background)
 
   // définition de toggles (un pour chaque chevron)
   int
-    in = 0,      //      <
-    out = 0,     //      >
-    outEnd = 0,  //      >>
-    err = 0,     //      2>
-    errEnd = 0,  //      2>>
-    andOne = 0,  //      2&>1
-    andTwo = 0,  //      1&>1
-    and = 0,     //      &>
-    andEnd = 0;  //      &>>
+      in = 0,      //      <
+      out = 0,     //      >
+      outEnd = 0,  //      >>
+      err = 0,     //      2>
+      errEnd = 0,  //      2>>
+      andOne = 0,  //      2&>1
+      andTwo = 0,  //      1&>1
+          and = 0, //      &>
+      andEnd = 0;  //      &>>
 
   //* -----  PARSING DE LA LDC -----
 
@@ -407,7 +405,7 @@ void parsingChevrons(char *ligne[], int background)
   //? & lancement en arrière plan
   if (background)
   {
-    // redirection vers '/dev/null' 
+    // redirection vers '/dev/null'
     int fd;
     if ((fd = open("/dev/null", O_WRONLY | O_CREAT | O_TRUNC, 0666)) < 0)
     {
@@ -675,4 +673,3 @@ int forkPipes(int n, struct command *cmd, int background)
   parsingChevrons(cmd[i].argv, background);
   return execvp(commande[0], (char *const *)commande);
 }
-

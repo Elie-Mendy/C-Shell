@@ -1,2 +1,0 @@
-# Self Organising Map
-

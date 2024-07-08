@@ -1,9 +1,9 @@
 # definition de variables 
 CC = gcc
-CFLAGS = -Wall menshell.c
+CFLAGS = -Wall main.c
 LIB = -L/usr/include -lreadline
-EXEC = menshell
-SRC = menshell.c
+EXEC = bash-shell
+SRC = main.c
 
 
 # regle all
