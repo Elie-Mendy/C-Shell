@@ -1,33 +1,92 @@
----
-cover: .gitbook/assets/shell.webp
-coverY: 0
----
+# bash-shell : a clone of the famous shell
 
-# Introduction
+- [Introduction](#introduction)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Compilation](#compilation)
+- [Usage](#usage)
+- [Supported Commands](#supported-commands)
+- [Example Usage](#example-usage)
+- [Author](#author)
+- [Contribution](#contribution)
+- [License](#license)
+
 
 ## Introduction
 
-{% embed url="https://github.com/Elie-Mendy/bash-shell" %}
+This project aims to provide hands-on understanding of basic shell programming concepts, process management, and input/output redirections on Linux systems.
 
-### Objectif
+> [!CAUTION]
+> This shell implementation is intended for educational purposes only. 
+> It should not be used in a production environment.
 
-Le programme `menshell.c` est un shell minimaliste développé dans un but pédagogique pour illustrer la structure et le fonctionnement d'un shell. Ce projet a pour but de fournir une compréhension approfondie des concepts fondamentaux du développement en C, en particulier ceux liés à la manipulation des processus, à la gestion de la mémoire et aux appels système. En développant ce shell, il est possible de se familiariser avec des concepts avancés tels que le découpage de chaînes, la gestion des redirections et la création de processus enfants.
+## Features
 
-### Démarche
+- Reading and parsing command lines
+- Execution of commands in foreground and background
+- Handling input/output redirections
+- Processing pipes (`|`) for inter-process communication
+- Implementation of custom commands like `cd` and `exit`
 
-Le développement du shell `menshell` a suivi une démarche structurée pour assurer une compréhension progressive et approfondie des différents concepts. Voici les principales étapes de cette démarche :
+## Prerequisites
 
-1. **Définition des constantes et structures de données** :
-   * Définition des constantes pour les tailles maximales des lignes de commande, des mots, des commandes, etc.
-   * Création de la structure `command` pour stocker les arguments des commandes.
-2. **Gestion des entrées utilisateur** :
-   * Lecture des lignes de commande saisies par l'utilisateur.
-   * Découpage des lignes en mots et en commandes.
-3. **Implémentation des commandes internes** :
-   * Développement des commandes internes comme `cd` et `exit`.
-4. **Gestion des processus** :
-   * Utilisation des appels système `fork`, `execvp` et `waitpid` pour créer et gérer des processus enfants.
-   * Implémentation de la gestion des redirections (entrée, sortie, erreurs) et des pipes.
-5. **Traitement des redirections et des pipes** :
-   * Identification et traitement des chevrons pour les redirections (`<`, `>`, `>>`, `2>`, `2>>`, etc.).
-   * Mise en place des pipes pour permettre l'exécution de commandes enchaînées.
+- Unix-like operating system (Linux, macOS)
+- GCC compiler
+- Readline library (for command autocompletion and history)
+
+## Compilation
+
+To compile bash-shell, use the following command:
+```sh
+gcc -o bash-shell main.c
+```
+
+## Usage
+
+To launch the shell, simply run:
+```sh
+./bash-shell
+```
+
+### Supported Commands
+
+bash-shell supports all standard commands available on a Unix shell, as well as some custom commands:
+- `cd <dir>` : Change the current directory.
+- `exit` : Exit the shell.
+- `<command> &` : Execute the command in the background.
+- `<command> > <file>` : Redirect standard output to a file.
+- `<command> < <file>` : Redirect standard input from a file.
+- `<command> | <command>` : Use a pipe to connect two commands.
+
+## Example Usage
+
+Here are some example commands you can run in `bash-shell`:
+
+```sh
+cd /home/user
+ls -l
+cat file.txt | grep "pattern"
+gcc -o myprog myprog.c > output.log
+./myprog &
+```
+
+## Author
+
+- **Elie MENDY**
+
+## Contribution
+
+Contributions are welcome! If you would like to improve this project, please follow these steps:
+
+1. Fork the repository
+2. Create a branch for your feature (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+> [!TIP]
+> If this project has been helpful to you, consider leaving a star to show your support!
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
